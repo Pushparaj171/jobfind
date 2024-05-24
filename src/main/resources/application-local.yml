@@ -1,0 +1,52 @@
+server:
+  port: 8099
+  servlet:
+    context-path: /jobSeekerProfile
+ 
+
+spring:
+  application:
+    name: jobSeekerProfile 
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/JobSeekerProfiles?createDatabaseIfNotExist=true
+    username: postgres
+    password: password@123
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+     ddl-auto: update
+    properties:
+     hibernate:
+       database-platform: org.hibernate.dialect.PostgreSQL95Dialects
+       spring:
+    main:
+      web-application-type: none
+           
+swagger:
+  url:
+     #productionURL: https://virtusa-clinic.learn.skillassure.com/clinic
+     localURL: http://localhost:${server.port}/jobSeekerProfile
+
+  
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+
+logging:
+  file:
+    name: inventory.log`
+  pattern:
+    console: '%d %-5level %logger : %msg%n'
+    file: '%d %-5level [%thread] %logger : %msg%n'
+  level:
+    '[org.springframework.web]': INFO
+    '[com.ros.inventory]': DEBUG
+    '[org.hibernate]': INFO
